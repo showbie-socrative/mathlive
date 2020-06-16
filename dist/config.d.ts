@@ -1,4 +1,4 @@
-/* 0.52.0 */import { ErrorListener, MacroDictionary, ParseMode } from './core';
+import { ErrorListener, MacroDictionary, ParseMode } from './core';
 import type { Mathfield } from './mathfield';
 import type { Selector } from './commands';
 /**
