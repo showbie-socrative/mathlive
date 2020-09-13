@@ -4132,14 +4132,9 @@ M500 241 v40 H399408 v-40z M500 435 v40 H400000 v-40z`,
     // but Firefox doesn't support it
     // (https://bugzilla.mozilla.org/show_bug.cgi?id=1361876). Booo...
     // See also https://stackoverflow.com/questions/26133593/using-regex-to-match-international-unicode-alphanumeric-characters-in-javascript
-    const LETTER = typeof navigator !== 'undefined' &&
-        /firefox|edge|Trident/i.test(navigator.userAgent)
-        ? /[a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/
-        : new RegExp('\\p{Letter}', 'u');
-    const LETTER_AND_DIGITS = typeof navigator !== 'undefined' &&
-        /firefox|edge|Trident/i.test(navigator.userAgent)
-        ? /[0-9a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/
-        : new RegExp('[0-9\\p{Letter}]', 'u');
+    // Socrative June 17, 2020: Regex was causing issues in IE, older versions of Safari (e.g. on IOS 11), and Firefox
+    const LETTER = /[a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/;
+    const LETTER_AND_DIGITS = /[0-9a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/;
     /**
      * @param symbol    The LaTeX command for this symbol, for
      * example `\alpha` or `+`
@@ -38150,7 +38145,7 @@ M500 241 v40 H399408 v-40z M500 435 v40 H400000 v-40z`,
         return element.getAttribute('data-' + ((_a = options.namespace) !== null && _a !== void 0 ? _a : '') + 'original-content');
     }
     // This SDK_VERSION variable will be replaced during the build process.
-    const version = '0.56.0';
+    const version = '0.56.1';
     var mathlive = {
         version,
         latexToMarkup: latexToMarkup$2,
