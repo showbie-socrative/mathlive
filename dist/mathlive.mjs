@@ -38139,7 +38139,7 @@ function getOriginalContent(element, options) {
     return element.getAttribute('data-' + ((_a = options.namespace) !== null && _a !== void 0 ? _a : '') + 'original-content');
 }
 // This SDK_VERSION variable will be replaced during the build process.
-const version = '0.56.1';
+const version = '0.52.1-soc';
 var mathlive = {
     version,
     latexToMarkup: latexToMarkup$2,

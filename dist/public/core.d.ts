@@ -1,4 +1,4 @@
-/* 0.56.1 *//**
+/* 0.52.1-soc *//**
  * The mode that indicates how a portion of content is interpreted
  *
  * @deprecated The 'command'mode will be dropped in a future release

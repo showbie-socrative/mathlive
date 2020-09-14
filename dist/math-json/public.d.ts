@@ -1,4 +1,4 @@
-/* 0.56.1 */import { Domain } from './domains';
+/* 0.52.1-soc */import { Domain } from './domains';
 export declare type FunctionDefinition = {
     /**
      * A short string indicating an entry in a wikibase. For example
