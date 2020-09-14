@@ -56,7 +56,7 @@ export const REVERSE_MATH_SYMBOLS = {
     '[': '\\lbrack',
     ']': '\\rbrack',
     ':': '\\colon', // Also :
-    
+
     '\u00a0': '~', // Also \space
     '\u00ac': '\\neg',  // Also \lnot
 
@@ -366,18 +366,11 @@ export const COMMAND_MODE_CHARACTERS = /[a-zA-Z0-9!@*()-=+{}[\]\\';:?/.,~<>`|'$%
 // and Spanish. We use \p{L} (Unicode property escapes: "Letter")
 // but Firefox doesn't support it
 // (https://bugzilla.mozilla.org/show_bug.cgi?id=1361876). Booo...
-// See also https://stackoverflow.com/questions/26133593/using-regex-to-match-international-unicode-alphanumeric-characters-in-javascript
-export const LETTER =
-    typeof navigator !== 'undefined' &&
-    /firefox|edge/i.test(navigator.userAgent)
-        ? /[a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/
-        : new RegExp('\\p{Letter}', 'u');
 
-export const LETTER_AND_DIGITS =
-    typeof navigator !== 'undefined' &&
-    /firefox|edge/i.test(navigator.userAgent)
-        ? /[0-9a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/
-        : new RegExp('[0-9\\p{Letter}]', 'u');
+// Socrative June 17, 2020: Regex was causing issues in IE, older versions of Safari (e.g. on IOS 11), and Firefox
+export const LETTER = /[a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/;
+
+export const LETTER_AND_DIGITS = /[0-9a-zA-ZаАбБвВгГдДеЕёЁжЖзЗиИйЙкКлЛмМнНоОпПрРсСтТуУфФхХцЦчЧшШщЩъЪыЫьЬэЭюЮяĄąĆćĘęŁłŃńÓóŚśŹźŻżàâäôéèëêïîçùûüÿæœÀÂÄÔÉÈËÊÏÎŸÇÙÛÜÆŒäöüßÄÖÜẞàèéìíîòóùúÀÈÉÌÍÎÒÓÙÚáéíñóúüÁÉÍÑÓÚÜ]/;
 
 /**
  * @param symbol    The LaTeX command for this symbol, for
