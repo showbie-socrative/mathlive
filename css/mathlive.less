@@ -66,8 +66,8 @@
 
 .ML__mathit {
     font-family: @math_math;
-    /* The @math_math (KaTeX_Math) font is italic 
-        by default, so the font-style below is only 
+    /* The @math_math (KaTeX_Math) font is italic
+        by default, so the font-style below is only
         useful when a fallback font is used
     */
     font-style: italic;
@@ -84,7 +84,7 @@
     font-weight: bold;
 }
 
-/* lowercase greek symbols should stick to math font when \mathbf is applied 
+/* lowercase greek symbols should stick to math font when \mathbf is applied
    to match TeX idiosyncratic behavior */
 .lcGreek.ML__mathbf {
     font-family: @math_math;
@@ -294,14 +294,17 @@
                 content: '';
                 display: block;
                 margin-top: -0.04em;
-                border-bottom-style: solid;
-                border-bottom-width: 0.04em;
                 min-height: 0.04em;
-                /* There's a bug since Chrome 62 where 
-                sub-pixel border lines don't draw at some zoom 
-                levels (110%, 90%). Setting the min-height seems to work around it.
+                /* There's a bug since Chrome 62 where sub-pixel
+                border lines don't draw at some zoom
+                levels (110%, 90%).
+                Setting the min-height used to work around it, but
+                that workaround broke in Chrome 84 or so.
+                Setting the background (and the min-height) seems to
+                work for now.
                 */
-                box-sizing: content-box; /* Vuetify sets the box-sizing to inherit 
+                background: currentColor;
+                box-sizing: content-box; /* Vuetify sets the box-sizing to inherit
                 causes the fraction line to not draw at all sizes (see #26) */
             }
         }
@@ -443,8 +446,8 @@
         &:after {
             border-bottom-style: solid;
             border-bottom-width: 0.04em;
-            min-height: thin; /* There's a bug since Chrome 62 where 
-            sub-pixel border lines don't draw at some zoom 
+            min-height: thin; /* There's a bug since Chrome 62 where
+            sub-pixel border lines don't draw at some zoom
             levels (110%, 90%). Setting the min-height seems to work around it.
             */
             content: '';
@@ -542,13 +545,8 @@
                 content: '';
                 display: block;
                 margin-top: -0.04em;
-                border-bottom-style: solid;
-                border-bottom-width: 0.04em;
-                min-height: 0.5px;
-                /* There's a bug since Chrome 62 where 
-                sub-pixel border lines don't draw at some zoom 
-                levels (110%, 90%). Setting the min-height seems to work around it.
-                */
+                min-height: 0.04em;
+                background: currentColor;
             }
 
             &:after {
@@ -743,7 +741,7 @@
     padding-left: 0.25em;
 }
 
-/* When using smartFence, the anticipated closing fence is displayed 
+/* When using smartFence, the anticipated closing fence is displayed
 with this style */
 .ML__smart-fence__close {
     opacity: 0.5;
@@ -786,9 +784,9 @@ body[theme='dark'] .ML__keystroke-caption {
     --keystroke-border: hsl(var(--hue), 50%, 25%);
 }
 
-/* Add an attribute 'data-tooltip' to automatically show a 
-   tooltip over a element on hover. 
-   Use 'data-position="top"' to place the tooltip above the 
+/* Add an attribute 'data-tooltip' to automatically show a
+   tooltip over a element on hover.
+   Use 'data-position="top"' to place the tooltip above the
    element rather than below.
    Use 'data-delay' to delay the triggering of the tooltip.
 */
@@ -1959,14 +1957,14 @@ div.ML__popover.is-visible {
     padding-top: 0.25em;
 }
 
-/* Style for the character that joins the modifiers of a keyboard shortcut 
+/* Style for the character that joins the modifiers of a keyboard shortcut
 (usually a "+" sign)*/
 .ML__shortcut-join {
     opacity: 0.5;
 }
 
-/* Styling for an element which is overlaid 
-to the left and right of the mathfield while 
+/* Styling for an element which is overlaid
+to the left and right of the mathfield while
 scrolling to prevent the capture of hover events */
 .ML__scroller {
     position: fixed;
